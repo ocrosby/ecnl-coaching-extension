@@ -40,3 +40,32 @@ A Google Chrome extension for extracting coaching information from the ECNL even
 
 By following these steps, you can effectively develop and debug your Chrome extension.
 
+## Publishing
+
+To deploy the Chorme extension, follow these steps:
+
+### 1. Prepare the Extension
+
+1. Ensure all files are in the correct directory structure.
+2. Update the manifest.json version number if you need to.
+3. Test your extension thoroughly in developer mode.
+
+### 2. Package Your Extension
+
+1. Open Chrome and go to chorome://extensions/.
+2. Enable "Developer mode" using the toggle switch in the top right corner.
+3. Click the "Pack extension" button.
+4. In the "Extension root directory" field, select the directory containinng your extension files.
+5. Click "Pack extension".
+
+This will generate a .crx file and a private key file (.pem) in the directory you specified.
+
+### 3. Publish Your Extension
+
+1. Go to the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole).
+2. Click "Add a new item".
+3. Upload the .crx file generated in the previous step.
+4. Fill out the required information (description, screenshots, etc.).
+5. Submit your extension for review.
+
+Once approved, your extension will be available on the Chrome Web Store.
