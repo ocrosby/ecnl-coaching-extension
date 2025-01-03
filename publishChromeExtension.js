@@ -1,5 +1,4 @@
 const chromeWebstoreUpload = require('chrome-webstore-upload');
-const fs = require('fs');
 const path = require('path');
 
 const { CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN, EXTENSION_ID } = process.env;
