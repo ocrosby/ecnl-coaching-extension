@@ -1,6 +1,5 @@
 const globals = require("globals");
 const js = require("@eslint/js");
-const json = require("eslint-plugin-json");
 
 module.exports = [
   {
@@ -15,9 +14,6 @@ module.exports = [
         require: "readonly",
         module: "readonly"
       }
-    },
-    plugins: {
-      json
     },
     rules: {
       "no-unused-vars": ["warn", { "args": "none" }],

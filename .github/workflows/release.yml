@@ -1,0 +1,87 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+env:
+  NODE_VERSION: '21.1.0'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0 # Fetch all history and tags
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        run: |
+          npm install --no-fund
+
+      - name: Set Git Safe Directory
+        run: |
+          git config --global --add safe.directory ${{ github.workspace }}
+          git config --global --add safe.directory /__w/ecnl-coaching-extension
+
+      - name: Debug Git Configuration
+        run: |
+          pwd
+          ls -la
+          git rev-parse --show-toplevel
+          git status
+
+      - name: Set Up Git for Semantic Release
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run Semantic Release
+        id: semantic_release
+        env:
+          DEBUG: semantic-release:*
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          cd /__w/ecnl-coaching-extension
+          npx semantic-release || echo "semantic-release failed with exit code $?"
+          pwd
+          ls -la
+          git status
+
+      - name: Check if a release is needed
+        run: |
+          echo "version_changed=${{ steps.semantic_release.outputs.version_changed }}"
+          echo "outcome=${{ steps.semantic_release.outcome }}"
+
+      - name: Conditionally Build and Publish
+        if: steps.semantic_release.outcome == 'success' && steps.semantic_release.outputs.version_changed == 'true'
+        env:
+          CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
+          EXTENSION_ID: ${{ secrets.CHROME_EXTENSION_ID }}
+        run: |
+          node publishChromeExtension.js
