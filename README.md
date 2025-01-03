@@ -69,3 +69,10 @@ This will generate a .crx file and a private key file (.pem) in the directory yo
 5. Submit your extension for review.
 
 Once approved, your extension will be available on the Chrome Web Store.
+
+## References
+
+- [2024-25 ECNL Boys National Events](https://theecnl.com/sports/2024/7/6/2425%20B%20Natl%20Events.aspx?path=msoc)
+- [2024-25 ECNL Boys Regional League Events](https://theecnl.com/sports/2024/7/6/2425%20BRL%20Events.aspx?path=ecnlrlb)
+- [2024-25 ECNL Girls National Events](https://theecnl.com/sports/2024/7/6/2425%20G%20Natl%20Events.aspx?path=wsoc)
+- [2024-25 ECNL Girls Regional League Events](https://theecnl.com/sports/2024/7/6/2425%20GRL%20Events.aspx?path=ecnl-rl-girls)
