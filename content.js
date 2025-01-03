@@ -20,9 +20,40 @@ function extractCoachesInfo() {
     return coaches;
 }
 
+function downloadCSV(coaches) {
+    const headers = ['University', 'Sport', 'Division', 'Conference', 'Location', 'Type', 'Website', 'Name', 'Title', 'Email'];
+    const rows = coaches.map(coach => [
+        coach.university,
+        coach.sport,
+        coach.division,
+        coach.conference,
+        coach.location,
+        coach.type,
+        coach.website,
+        coach.name,
+        coach.title,
+        coach.email
+    ]);
+
+    let csvContent = 'data:text/csv;charset=utf-8,';
+    csvContent += headers.join(',') + '\n';
+    rows.forEach(row => {
+        csvContent += row.join(',') + '\n';
+    });
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', 'coaches_info.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === 'extractCoaches') {
         const coaches = extractCoachesInfo();
-        sendResponse({ coaches });
+        downloadCSV(coaches);
+        sendResponse({ success: true });
     }
 });
