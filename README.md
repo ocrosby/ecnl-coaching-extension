@@ -16,7 +16,7 @@ A Google Chrome extension for extracting coaching information from the ECNL even
 
 1. Navigate to the ECNL events page where your content script runs.
 2. Open Chrome DevTools (right-click on the page and select "Inspect").
-3. Go to the "Sources" tab and find your content script (content.js) under the "Conntent scripts" section.
+3. Go to the "Sources" tab and find your content script (content.js) under the "Content scripts" section.
 4. Set breakpoints and use the console to debug.
 
 #### Background Script
