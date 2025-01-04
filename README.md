@@ -52,7 +52,7 @@ To deploy the Chorme extension, follow these steps:
 
 ### 2. Package Your Extension
 
-1. Open Chrome and go to chorome://extensions/.
+1. Open Chrome and go to [Extensions](chrome://extensions/).
 2. Enable "Developer mode" using the toggle switch in the top right corner.
 3. Click the "Pack extension" button.
 4. In the "Extension root directory" field, select the directory containinng your extension files.
@@ -72,6 +72,7 @@ Once approved, your extension will be available on the Chrome Web Store.
 
 ## References
 
+- [Getting Started](https://developer.chrome.com/docs/extensions/get-started)
 - [Create and publish custom Chrome apps & extensions](https://support.google.com/chrome/a/answer/2714278?hl=en)
 - [2024-25 ECNL Boys National Events](https://theecnl.com/sports/2024/7/6/2425%20B%20Natl%20Events.aspx?path=msoc)
 - [2024-25 ECNL Boys Regional League Events](https://theecnl.com/sports/2024/7/6/2425%20BRL%20Events.aspx?path=ecnlrlb)
