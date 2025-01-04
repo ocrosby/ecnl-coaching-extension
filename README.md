@@ -72,6 +72,7 @@ Once approved, your extension will be available on the Chrome Web Store.
 
 ## References
 
+- [Create and publish custom Chrome apps & extensions](https://support.google.com/chrome/a/answer/2714278?hl=en)
 - [2024-25 ECNL Boys National Events](https://theecnl.com/sports/2024/7/6/2425%20B%20Natl%20Events.aspx?path=msoc)
 - [2024-25 ECNL Boys Regional League Events](https://theecnl.com/sports/2024/7/6/2425%20BRL%20Events.aspx?path=ecnlrlb)
 - [2024-25 ECNL Girls National Events](https://theecnl.com/sports/2024/7/6/2425%20G%20Natl%20Events.aspx?path=wsoc)
